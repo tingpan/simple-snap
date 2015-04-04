@@ -1,8 +1,8 @@
 
 class Snap extends SimpleModule
+  @pluginName: 'Snap'
 
   _init: ->
+    @dragdrop = @_module
 
-
-snap = (opts) ->
-  new Snap(opts)
+Dragdrop.connect Snap

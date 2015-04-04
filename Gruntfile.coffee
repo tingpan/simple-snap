@@ -3,73 +3,35 @@ module.exports = (grunt) ->
   grunt.initConfig
 
     pkg: grunt.file.readJSON 'package.json'
-    name: "snap"
-
-    sass:
-      styles:
-        options:
-          bundleExec: true
-          style: 'expanded'
-          sourcemap: 'none'
-        files:
-          'styles/<%= name %>.css': 'styles/<%= name %>.scss'
 
     coffee:
       src:
         options:
           bare: true
         files:
-          'lib/<%= name %>.js': 'src/<%= name %>.coffee'
-      spec:
-        files:
-          'spec/<%= name %>-spec.js': 'spec/<%= name %>-spec.coffee'
+          'lib/snap.js': 'src/snap.coffee'
+    watch:
+      src:
+        files: ['src/*.coffee','demo.html']
+        tasks: ['coffee:src', 'umd']
 
     umd:
       all:
-        src: 'lib/<%= name %>.js'
-        template: 'umd.hbs'
-        amdModuleId: '<%= pkg.name %>'
-        objectToExport: '<%= name %>'
-        globalAlias: '<%= name %>'
+        src: 'lib/snap.js'
+        template: 'umd'
+        amdModuleId: 'simple-snap'
+        objectToExport: 'snap'
+        globalAlias: 'snap'
         deps:
-          'default': ['$', 'SimpleModule']
-          amd: ['jquery', 'simple-module']
-          cjs: ['jquery', 'simple-module']
+          'default': ['$', 'SimpleModule','dragdrop']
+          amd: ['jquery', 'simple-module', 'simple-dragdrop']
+          cjs: ['jquery', 'simple-module', 'simple-dragdrop']
           global:
-            items: ['jQuery', 'SimpleModule']
+            items: ['jQuery', 'SimpleModule','dragdrop']
             prefix: ''
 
-    watch:
-      styles:
-        files: ['styles/*.scss']
-        tasks: ['sass']
-      spec:
-        files: ['spec/**/*.coffee']
-        tasks: ['coffee:spec']
-      src:
-        files: ['src/**/*.coffee']
-        tasks: ['coffee:src', 'umd']
-      jasmine:
-        files: ['lib/**/*.js', 'spec/**/*.js']
-        tasks: 'jasmine'
-
-    jasmine:
-      test:
-        src: ['lib/**/*.js']
-        options:
-          outfile: 'spec/index.html'
-          styles: 'styles/<%= name %>.css'
-          specs: 'spec/<%= name %>-spec.js'
-          vendor: [
-            'vendor/bower/jquery/dist/jquery.min.js'
-            'vendor/bower/simple-module/lib/module.js'
-          ]
-
-  grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-contrib-jasmine'
   grunt.loadNpmTasks 'grunt-umd'
 
-  grunt.registerTask 'default', ['sass', 'coffee', 'umd', 'jasmine', 'watch']
-  grunt.registerTask 'test', ['sass', 'coffee', 'umd', 'jasmine']
+  grunt.registerTask 'default', ['coffee', 'umd', 'watch']
