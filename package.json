@@ -1,0 +1,29 @@
+{
+  "name": "simple-snap",
+  "description": "A snap plugin for simple-dragdrop",
+  "version": "0.1.0",
+  "homepage": "https://github.com/TingPan/simple-snap",
+  "author": {
+    "name": "tingpan",
+    "email": "tingpan666@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TingPan/simple-snap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TingPan/simple-snap/issues"
+  },
+  "scripts": {
+    "test": "grunt test --verbose"
+  },
+  "devDependencies": {
+    "grunt": "0.x",
+    "grunt-contrib-watch": "0.x",
+    "grunt-contrib-coffee": "0.x",
+    "grunt-contrib-sass": "0.x",
+    "grunt-contrib-jasmine": "0.x",
+    "grunt-umd": "2.x"
+  },
+  "keywords": []
+}

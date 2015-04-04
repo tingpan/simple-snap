@@ -1,0 +1,31 @@
+{
+  "name": "simple-snap",
+  "version": "0.1.0",
+  "homepage": "https://github.com/TingPan/simple-snap",
+  "authors": [
+    "tingpan <tingpan666@gmail.com>"
+  ],
+  "description": "A snap plugin for simple-dragdrop",
+  "main": "lib/snap.js",
+  "keywords": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "spec",
+    "node_modules",
+    "vendor",
+    "Gemfile",
+    "Gemfile.lock",
+    "Gruntfile.coffee",
+    "package.json",
+    "README.md",
+    "demo.html",
+    "circle.yml",
+    "umd.hbs"
+  ],
+  "dependencies": {
+    "jquery": "2.x",
+    "simple-dragdrop" : "2.x"
+  }
+}
+
