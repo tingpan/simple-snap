@@ -23,11 +23,11 @@ module.exports = (grunt) ->
         objectToExport: 'snap'
         globalAlias: 'snap'
         deps:
-          'default': ['$', 'SimpleModule','Dragdrop']
+          'default': ['$', 'SimpleModule','SimpleDragdrop']
           amd: ['jquery', 'simple-module', 'simple-dragdrop']
           cjs: ['jquery', 'simple-module', 'simple-dragdrop']
           global:
-            items: ['jQuery', 'SimpleModule','Dragdrop']
+            items: ['jQuery', 'SimpleModule','simple.dragdrop']
             prefix: ''
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
