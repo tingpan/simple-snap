@@ -28,8 +28,9 @@
         }
 
         .ball {
+
             position: absolute;
-            display: inline-block;
+            top:120px;
             margin-left: 10px;
             color: #ffffff;
             line-height: 80px;
@@ -43,20 +44,6 @@
             vertical-align: middle;
         }
 
-        .bowl {
-            color: #ffffff;
-            text-align: center;
-            line-height: 100px;
-            margin-left: 10px;
-            display: inline-block;
-            border-radius: 40px;
-            height: 100px;
-            width: 200px;
-            background: #34495e;
-            -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23);
-            -moz-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23);
-        }
     </style>
 </head>
 
@@ -75,22 +62,20 @@
         <div class="ball" data-color="#3498db">Drag!</div>
         <div class="ball" data-color="#9b59b6">Drag!</div>
         <br/><br/>
-
-
     </section>
 </div>
 <script type="text/javascript" src="vendor/bower/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="vendor/bower/simple-module/lib/module.js"></script>
 <script type="text/javascript" src="vendor/bower/simple-dragdrop/lib/dragdrop.js"></script>
-<!-- <script type="text/javascript" src="lib/snap.js"></script> -->
+<script type="text/javascript" src="lib/snap.js"></script>
 <script type="text/javascript">
-    console.log(simple.dragdrop.Dragdrop);
     $(document).ready(function () {
         $('.ball').each(function (index, ele) {
             $ele = $(ele);
             $ele.css('background', $ele.data('color'));
+            $ele.css('left',300+index*50);
         });
-        dragdrop = simple.dragdrop({
+        dragdrop = simple.snap({
             draggable: '.ball',
             droppable: '.wrapper',
             placeholder: function (dragging) {
