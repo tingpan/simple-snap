@@ -35,7 +35,8 @@ class Snap extends SimpleModule
         'position' : 'absolute',
         'height' : '1px',
         'background-color': 'red',
-        'visibility' : 'hidden'
+        'visibility' : 'hidden',
+        'z-Index': 200
       })
     @wrapper.data 'sortable', @
     @showAlign = null
@@ -66,6 +67,7 @@ class Snap extends SimpleModule
     @horiLine.css 'visibility','hidden'
     targetTop = $helper.offset().top
     targetBot = $helper.offset().top + $helper.height()
+    targetMid = (targetTop + targetBot) / 2
     $.each $(obj.dragging).siblings("."+$(obj.dragging).attr('class')), (index,ele) =>
       forceHori = null
       lineAxis = null
@@ -74,18 +76,27 @@ class Snap extends SimpleModule
         return
       eleTop = $ele.offset().top
       eleBot = $ele.offset().top + $ele.height()
-      if targetTop - eleTop >= 0 && targetTop - eleTop <= offsetHori
-        forceHori  = eleTop - targetTop
-        lineAxis = eleTop
-      else if targetTop - eleBot >= 0 && targetTop - eleBot <= offsetHori
-        forceHori  = eleBot - targetTop
-        lineAxis = eleBot
-      else if eleBot - targetBot >= 0 && eleBot - targetBot <= offsetHori
-        forceHori  = eleBot - targetBot
-        lineAxis = eleBot
-      else if eleTop - targetBot >= 0 && eleTop - targetBot <= offsetHori
-        forceHori = eleTop - targetBot
-        lineAxis = eleTop
+      eleMid = (eleTop + eleBot) / 2
+      eleReference = [eleTop , eleMid , eleBot]
+      if (lineAxis = @_compareMid targetMid , eleMid)?
+        forceHori = lineAxis - targetMid
+      else if (lineAxis = @_compareReferences targetTop, eleReference)?
+        forceHori = lineAxis - targetTop
+      else if (lineAxis = @_compareReferences targetBot, eleReference)?
+        forceHori = lineAxis - targetBot
+
+#      if targetTop - eleTop >= 0 && targetTop - eleTop <= offsetHori
+#        forceHori  = eleTop - targetTop
+#        lineAxis = eleTop
+#      else if targetTop - eleBot >= 0 && targetTop - eleBot <= offsetHori
+#        forceHori  = eleBot - targetTop
+#        lineAxis = eleBot
+#      else if eleBot - targetBot >= 0 && eleBot - targetBot <= offsetHori
+#        forceHori  = eleBot - targetBot
+#        lineAxis = eleBot
+#      else if eleTop - targetBot >= 0 && eleTop - targetBot <= offsetHori
+#        forceHori = eleTop - targetBot
+#        lineAxis = eleTop
       if forceHori?
         if $stopObj
           distance1 = Math.abs ($stopObj.offset().left - $helper.offset().left)
@@ -96,7 +107,6 @@ class Snap extends SimpleModule
         _forceHori = forceHori
         _lineAxis = lineAxis
     if $stopObj?
-      console.log($stopObj)
       p1 = $helper.offset().left
       p2 = $stopObj.offset().left
       startPoint = if p2 < p1 then p2 else p1
@@ -107,6 +117,19 @@ class Snap extends SimpleModule
         'top' : _lineAxis,
         'left' : startPoint
       })
+
+  _compareMid : (target,reference) ->
+    offsetHori = @opts.alignOffset
+    if Math.abs(target - reference) <= offsetHori/2
+      return reference
+    null
+
+  _compareReferences: (target,references) ->
+    offsetHori = @opts.alignOffset
+    for reference in references
+      if Math.abs(target - reference) <= offsetHori/2
+        return reference
+    null
 
 snap = (opts) ->
   new Snap(opts)

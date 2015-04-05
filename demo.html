@@ -30,7 +30,6 @@
         .ball {
 
             position: absolute;
-            top:120px;
             margin-left: 10px;
             color: #ffffff;
             line-height: 80px;
@@ -74,6 +73,11 @@
             $ele = $(ele);
             $ele.css('background', $ele.data('color'));
             $ele.css('left',300+index*50);
+            var size = 80 + Math.round(Math.random() * 200)
+            var round = Math.random() * 2 > 1? "50%":"5%"
+            $ele.css('width',size);
+            $ele.css('height',size);
+            $ele.css('border-radius',round)
         });
         dragdrop = simple.snap({
             draggable: '.ball',

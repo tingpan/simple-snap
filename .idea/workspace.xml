@@ -24,21 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="snap.coffee" pinned="false" current-in-tab="true">
+      <file leaf-file-name="snap.coffee" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/snap.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6462264" vertical-offset="1346" max-vertical-offset="1770">
-              <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
+            <state vertical-scroll-proportion="-10.36" vertical-offset="1016" max-vertical-offset="2115">
+              <caret line="85" column="40" selection-start-line="85" selection-start-column="40" selection-end-line="85" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demo.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="demo.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.625" vertical-offset="915" max-vertical-offset="1770">
-              <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.45882353" vertical-offset="915" max-vertical-offset="1830">
+              <caret line="74" column="1" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -77,14 +77,20 @@
       <file leaf-file-name="snap.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/snap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2883" max-vertical-offset="3675">
-              <caret line="213" column="8" selection-start-line="213" selection-start-column="8" selection-end-line="213" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2446" max-vertical-offset="3000">
+              <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
               <folding>
-                <marker date="1428255619000" expanded="true" signature="2578:2848" placeholder="{...}" />
-                <marker date="1428255619000" expanded="true" signature="2659:2698" placeholder="{...}" />
-                <marker date="1428255619000" expanded="true" signature="2704:2841" placeholder="{...}" />
-                <marker date="1428255619000" expanded="true" signature="2983:3003" placeholder="{...}" />
-                <marker date="1428255619000" expanded="true" signature="4827:4939" placeholder="{&quot;visibility&quot;: 'visible'...}" />
+                <marker date="1428257952000" expanded="true" signature="1601:2357" placeholder="{...}" />
+                <marker date="1428257952000" expanded="true" signature="2216:2261" placeholder="{&quot;position&quot;: 'absolute'...}" />
+                <marker date="1428257952000" expanded="true" signature="3936:5103" placeholder="{...}" />
+                <marker date="1428257952000" expanded="true" signature="3928:5078" placeholder="{...}" />
+                <marker date="1428257952000" expanded="true" signature="3981:4064" placeholder="{...}" />
+                <marker date="1428257952000" expanded="true" signature="4254:4281" placeholder="{...}" />
+                <marker date="1428257952000" expanded="true" signature="4602:5068" placeholder="{...}" />
+                <marker date="1428257952000" expanded="true" signature="4786:5056" placeholder="{...}" />
+                <marker date="1428257952000" expanded="true" signature="4828:4916" placeholder="{...}" />
+                <marker date="1428257952000" expanded="true" signature="5197:5575" placeholder="{...}" />
+                <marker date="1428257952000" expanded="true" signature="5333:5551" placeholder="{&quot;visibility&quot;: 'visible'...}" />
               </folding>
             </state>
           </provider>
@@ -119,8 +125,8 @@
         <option value="$PROJECT_DIR$/Gruntfile.coffee" />
         <option value="$PROJECT_DIR$/umd.hbs" />
         <option value="$PROJECT_DIR$/lib/snap.js" />
-        <option value="$PROJECT_DIR$/demo.html" />
         <option value="$PROJECT_DIR$/src/snap.coffee" />
+        <option value="$PROJECT_DIR$/demo.html" />
       </list>
     </option>
   </component>
@@ -448,20 +454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/snap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2883" max-vertical-offset="3675">
-          <caret line="213" column="8" selection-start-line="213" selection-start-column="8" selection-end-line="213" selection-end-column="8" />
-          <folding>
-            <marker date="1428255619000" expanded="true" signature="2578:2848" placeholder="{...}" />
-            <marker date="1428255619000" expanded="true" signature="2659:2698" placeholder="{...}" />
-            <marker date="1428255619000" expanded="true" signature="2704:2841" placeholder="{...}" />
-            <marker date="1428255619000" expanded="true" signature="2983:3003" placeholder="{...}" />
-            <marker date="1428255619000" expanded="true" signature="4827:4939" placeholder="{&quot;visibility&quot;: 'visible'...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles/snap.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="550">
@@ -478,18 +470,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo.html">
+    <entry file="file://$PROJECT_DIR$/lib/snap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.625" vertical-offset="915" max-vertical-offset="1770">
-          <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2446" max-vertical-offset="3000">
+          <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+          <folding>
+            <marker date="1428257952000" expanded="true" signature="1601:2357" placeholder="{...}" />
+            <marker date="1428257952000" expanded="true" signature="2216:2261" placeholder="{&quot;position&quot;: 'absolute'...}" />
+            <marker date="1428257952000" expanded="true" signature="3936:5103" placeholder="{...}" />
+            <marker date="1428257952000" expanded="true" signature="3928:5078" placeholder="{...}" />
+            <marker date="1428257952000" expanded="true" signature="3981:4064" placeholder="{...}" />
+            <marker date="1428257952000" expanded="true" signature="4254:4281" placeholder="{...}" />
+            <marker date="1428257952000" expanded="true" signature="4602:5068" placeholder="{...}" />
+            <marker date="1428257952000" expanded="true" signature="4786:5056" placeholder="{...}" />
+            <marker date="1428257952000" expanded="true" signature="4828:4916" placeholder="{...}" />
+            <marker date="1428257952000" expanded="true" signature="5197:5575" placeholder="{...}" />
+            <marker date="1428257952000" expanded="true" signature="5333:5551" placeholder="{&quot;visibility&quot;: 'visible'...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/snap.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6462264" vertical-offset="1346" max-vertical-offset="1770">
-          <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
+        <state vertical-scroll-proportion="-10.36" vertical-offset="1016" max-vertical-offset="2115">
+          <caret line="85" column="40" selection-start-line="85" selection-start-column="40" selection-end-line="85" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45882353" vertical-offset="915" max-vertical-offset="1830">
+          <caret line="74" column="1" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="42" />
           <folding />
         </state>
       </provider>
