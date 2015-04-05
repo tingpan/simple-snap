@@ -108,56 +108,5 @@ class Snap extends SimpleModule
         'left' : startPoint
       })
 
-  _checkHori: (obj)->
-    offsetHori = @opts.alignOffset
-    _forceHori = 0
-    _lineAxis = 0
-    $helper = obj.helper
-    $stopObj = null
-    @horiLine.css 'visibility','hidden'
-    targetTop = $helper.offset().top
-    targetBot = $helper.offset().top + $helper.height()
-    $.each $(obj.dragging).siblings("."+$(obj.dragging).attr('class')), (index,ele) =>
-      forceHori = null
-      lineAxis = null
-      $ele = $(ele)
-      if parseInt($ele.css('z-index')) is 100
-        return
-      eleTop = $ele.offset().top
-      eleBot = $ele.offset().top + $ele.height()
-      if targetTop - eleTop >= 0 && targetTop - eleTop <= offsetHori
-        forceHori  = eleTop - targetTop
-        lineAxis = eleTop
-      else if targetTop - eleBot >= 0 && targetTop - eleBot <= offsetHori
-        forceHori  = eleBot - targetTop
-        lineAxis = eleBot
-      else if eleBot - targetBot >= 0 && eleBot - targetBot <= offsetHori
-        forceHori  = eleBot - targetBot
-        lineAxis = eleBot
-      else if eleTop - targetBot >= 0 && eleTop - targetBot <= offsetHori
-        forceHori = eleTop - targetBot
-        lineAxis = eleTop
-      if forceHori?
-        if $stopObj
-          distance1 = Math.abs ($stopObj.offset().left - $helper.offset().left)
-          distance2 = Math.abs($ele.offset().left - $helper.offset().left)
-          if distance2 >= distance1
-            return
-        $stopObj = $ele
-        _forceHori = forceHori
-        _lineAxis = lineAxis
-    if $stopObj?
-      console.log($stopObj)
-      p1 = $helper.offset().left
-      p2 = $stopObj.offset().left
-      startPoint = if p2 < p1 then p2 else p1
-      width = (Math.abs p1 - p2 ) + if p2 < p1 then parseInt $helper.css 'width' else parseInt $stopObj.css 'width'
-      @horiLine.css({
-        'visibility' : 'visible',
-        'width' : width,
-        'top' : _lineAxis,
-        'left' : startPoint
-      }
-
 snap = (opts) ->
   new Snap(opts)

@@ -27,8 +27,8 @@
       <file leaf-file-name="snap.coffee" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/snap.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6462264" vertical-offset="2111" max-vertical-offset="2535">
-              <caret line="159" column="7" selection-start-line="159" selection-start-column="7" selection-end-line="159" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.6462264" vertical-offset="1346" max-vertical-offset="1770">
+              <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -488,8 +488,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/snap.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6462264" vertical-offset="2111" max-vertical-offset="2535">
-          <caret line="159" column="7" selection-start-line="159" selection-start-column="7" selection-end-line="159" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.6462264" vertical-offset="1346" max-vertical-offset="1770">
+          <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
           <folding />
         </state>
       </provider>
