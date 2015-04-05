@@ -58,12 +58,12 @@ class Snap extends SimpleModule
     @dragdrop.on 'before-dragend', (e, obj) =>
       @trigger 'before-dragend', obj
     @dragdrop.on 'dragend', (e, obj) =>
-      if @opt.align
+      if @opts.align
         @horiLine.css "visibility", "hidden"
         @vertLine.css "visibility", "hidden"
       @trigger 'dragend', obj
     @dragdrop.on 'drag', (e, obj) =>
-      if @opt.align
+      if @opts.align
         @forceHori = 0
         @forceVert = 0
         @_checkHori obj

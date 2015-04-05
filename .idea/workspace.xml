@@ -24,20 +24,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="snap.coffee" pinned="false" current-in-tab="true">
+      <file leaf-file-name="snap.coffee" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/snap.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44397464" vertical-offset="720" max-vertical-offset="3000">
-              <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+            <state vertical-scroll-proportion="-10.2" vertical-offset="720" max-vertical-offset="3000">
+              <caret line="65" column="14" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demo.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="demo.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-29.125" vertical-offset="531" max-vertical-offset="1740">
+            <state vertical-scroll-proportion="0.49367088" vertical-offset="996" max-vertical-offset="1740">
               <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
               <folding />
             </state>
@@ -77,8 +77,8 @@
       <file leaf-file-name="snap.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/snap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="751" max-vertical-offset="4275">
-              <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="811" max-vertical-offset="4335">
+              <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -113,8 +113,8 @@
         <option value="$PROJECT_DIR$/Gruntfile.coffee" />
         <option value="$PROJECT_DIR$/umd.hbs" />
         <option value="$PROJECT_DIR$/lib/snap.js" />
-        <option value="$PROJECT_DIR$/demo.html" />
         <option value="$PROJECT_DIR$/src/snap.coffee" />
+        <option value="$PROJECT_DIR$/demo.html" />
       </list>
     </option>
   </component>
@@ -491,6 +491,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4890">
           <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -520,24 +521,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/snap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="751" max-vertical-offset="4275">
-          <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.125" vertical-offset="531" max-vertical-offset="1740">
-          <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="811" max-vertical-offset="4335">
+          <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/snap.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44397464" vertical-offset="720" max-vertical-offset="3000">
-          <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+        <state vertical-scroll-proportion="-10.2" vertical-offset="720" max-vertical-offset="3000">
+          <caret line="65" column="14" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49367088" vertical-offset="996" max-vertical-offset="1740">
+          <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
           <folding />
         </state>
       </provider>
