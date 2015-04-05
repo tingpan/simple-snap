@@ -70,12 +70,13 @@
         $('.ball').each(function (index, ele) {
             $ele = $(ele);
             $ele.css('background', $ele.data('color'));
-            $ele.css('left',300+index*50);
+            $ele.css('left', (25 + index * 5) + "%");
             var size = 80 + Math.round(Math.random() * 200)
-            var round = Math.random() * 2 > 1? "50%":"5%"
-            $ele.css('width',size);
-            $ele.css('height',size);
-            $ele.css('border-radius',round)
+            var round = Math.random() * 2 > 1 ? "50%" : "5%"
+            $ele.css('width', size);
+            $ele.css('height', size);
+            $ele.css('line-height', size + "px");
+            $ele.css('border-radius', round)
         });
         dragdrop = simple.snap({
             draggable: '.ball',
@@ -84,15 +85,10 @@
                 $placeholder = $(dragging).clone();
                 $placeholder.css({opacity: 0.5});
                 return $placeholder;
-            },
-            helper: function (dragging) {
-                $helper = $(dragging).clone();
-                $helper.text('');
-                return $helper;
             }
         });
 
-        dragdrop.on('dragstart', function (e,obj) {
+        dragdrop.on('dragstart', function (e, obj) {
             $('html').css('cursor', 'move');
         });
         dragdrop.on('dragend', function () {
@@ -102,8 +98,8 @@
         dragdrop.on('before-dragend', function (e, obj) {
             var top = obj.helper.css('top');
             var left = obj.helper.css('left');
-            $(obj.dragging).css('top',top);
-            $(obj.dragging).css('left',left);
+            $(obj.dragging).css('top', top);
+            $(obj.dragging).css('left', left);
         });
     });
 </script>

@@ -1,4 +1,3 @@
-
 class Snap extends SimpleModule
 
   opts:
@@ -14,7 +13,7 @@ class Snap extends SimpleModule
     },
     distance: 1,
     axis: null,
-    alignMode: 1,
+    align:true,
     alignOffset: 10,
     rage: 100
 
@@ -33,53 +32,58 @@ class Snap extends SimpleModule
       distance: @opts.distance
       @horiLine = $('<div></div>').appendTo("body")
       @horiLine.css({
-        'position' : 'absolute',
-        'height' : '1px',
-        'background-color': 'red',
-        'visibility' : 'hidden',
+        'position': 'absolute',
+        'height': '1px',
+        'background-color': '#c0392b',
+        'visibility': 'hidden',
         'z-Index': 200
       })
       @vertLine = $('<div></div>').appendTo("body")
       @vertLine.css({
-          'position' : 'absolute',
-          'width' : '1px',
-          'background-color': 'red',
-          'height' : '300px',
-          'z-Index': 200
+        'position': 'absolute',
+        'width': '1px',
+        'background-color': '#c0392b',
+        'height': '300px',
+        'visibility': 'hidden',
+        'z-Index': 200
       })
     @wrapper.data 'sortable', @
     @_bind()
 
   _bind: ->
-    @dragdrop.on 'dragstart', (e,obj) =>
-      @trigger 'dragstart',obj
-    @dragdrop.on 'dragenter', (e,obj) =>
+    @dragdrop.on 'dragstart', (e, obj) =>
+      @trigger 'dragstart', obj
+    @dragdrop.on 'dragenter', (e, obj) =>
       @trigger 'dragenter', obj
-    @dragdrop.on 'before-dragend', (e,obj) =>
+    @dragdrop.on 'before-dragend', (e, obj) =>
       @trigger 'before-dragend', obj
-    @dragdrop.on 'dragend', (e,obj) =>
+    @dragdrop.on 'dragend', (e, obj) =>
+      if @opt.align
+        @horiLine.css "visibility", "hidden"
+        @vertLine.css "visibility", "hidden"
       @trigger 'dragend', obj
-    @dragdrop.on 'drag' ,(e,obj) =>
-      @forceHori = 0
-      @forceVert = 0
-      @_checkHori obj
-      @_checkVert obj
-      top = obj.helper.offset().top + @forceHori
-      left = obj.helper.offset().left + @forceVert
-      obj.helper.css 'top' , top
-      obj.helper.css 'left', left
-      @trigger 'drag',obj
+    @dragdrop.on 'drag', (e, obj) =>
+      if @opt.align
+        @forceHori = 0
+        @forceVert = 0
+        @_checkHori obj
+        @_checkVert obj
+        top = obj.helper.offset().top + @forceHori
+        left = obj.helper.offset().left + @forceVert
+        obj.helper.css 'top', top
+        obj.helper.css 'left', left
+      @trigger 'drag', obj
 
 
   _checkHori: (obj)->
     _lineAxis = 0
     $helper = obj.helper
     $stopObj = null
-    @horiLine.css 'visibility','hidden'
+    @horiLine.css 'visibility', 'hidden'
     targetTop = $helper.offset().top
     targetBot = $helper.offset().top + $helper.height()
     targetMid = (targetTop + targetBot) / 2
-    $.each $(obj.dragging).siblings("."+$(obj.dragging).attr('class')), (index,ele) =>
+    $.each $(obj.dragging).siblings("." + $(obj.dragging).attr('class')), (index, ele) =>
       forceHori = null
       lineAxis = null
       $ele = $(ele)
@@ -90,8 +94,8 @@ class Snap extends SimpleModule
       eleTop = $ele.offset().top
       eleBot = $ele.offset().top + $ele.height()
       eleMid = (eleTop + eleBot) / 2
-      eleReference = [eleTop , eleMid , eleBot]
-      if (lineAxis = @_compareMid targetMid , eleMid)?
+      eleReference = [eleTop, eleMid, eleBot]
+      if (lineAxis = @_compareMid targetMid, eleMid)?
         forceHori = lineAxis - targetMid
       else if (lineAxis = @_compareReferences targetTop, eleReference)?
         forceHori = lineAxis - targetTop
@@ -112,21 +116,21 @@ class Snap extends SimpleModule
       startPoint = if p2 < p1 then p2 else p1
       width = (Math.abs p1 - p2 ) + if p2 < p1 then parseInt $helper.css 'width' else parseInt $stopObj.css 'width'
       @horiLine.css({
-        'visibility' : 'visible',
-        'width' : width,
-        'top' : _lineAxis,
-        'left' : startPoint
+        'visibility': 'visible',
+        'width': width,
+        'top': _lineAxis,
+        'left': startPoint
       })
 
   _checkVert: (obj)->
     _lineAxis = 0
     $helper = obj.helper
     $stopObj = null
-    @vertLine.css 'visibility','hidden'
+    @vertLine.css 'visibility', 'hidden'
     targetLeft = $helper.offset().left
     targetRight = $helper.offset().left + $helper.width()
     targetMid = (targetLeft + targetRight) / 2
-    $.each $(obj.dragging).siblings("."+$(obj.dragging).attr('class')), (index,ele) =>
+    $.each $(obj.dragging).siblings("." + $(obj.dragging).attr('class')), (index, ele) =>
       forceVert = null
       lineAxis = null
       $ele = $(ele)
@@ -137,8 +141,8 @@ class Snap extends SimpleModule
       eleLeft = $ele.offset().left
       eleRight = $ele.offset().left + $ele.width()
       eleMid = (eleLeft + eleRight) / 2
-      eleReference = [eleLeft , eleRight , eleMid]
-      if (lineAxis = @_compareMid targetMid , eleMid)?
+      eleReference = [eleLeft, eleRight, eleMid]
+      if (lineAxis = @_compareMid targetMid, eleMid)?
         forceVert = lineAxis - targetMid
       else if (lineAxis = @_compareReferences targetLeft, eleReference)?
         forceVert = lineAxis - targetLeft
@@ -146,7 +150,7 @@ class Snap extends SimpleModule
         forceVert = lineAxis - targetRight
       if forceVert?
         if $stopObj
-          distance1 = Math.abs ($stopObj.offset().top- $helper.offset().top)
+          distance1 = Math.abs ($stopObj.offset().top - $helper.offset().top)
           distance2 = Math.abs($ele.offset().top - $helper.offset().top)
           if distance2 >= distance1
             return
@@ -159,32 +163,32 @@ class Snap extends SimpleModule
       startPoint = if p2 < p1 then p2 else p1
       height = (Math.abs p1 - p2 ) + if p2 < p1 then $helper.height() else parseInt $stopObj.height()
       @vertLine.css({
-        'visibility' : 'visible',
-        'height' : height,
-        'left' : _lineAxis,
-        'top' : startPoint
+        'visibility': 'visible',
+        'height': height,
+        'left': _lineAxis,
+        'top': startPoint
       })
 
-  _compareMid : (target,reference) ->
+  _compareMid: (target, reference) ->
     offsetHori = @opts.alignOffset
     if Math.abs(target - reference) <= 1
       return reference
     null
 
-  _compareReferences: (target,references) ->
+  _compareReferences: (target, references) ->
     offsetHori = @opts.alignOffset
     for reference in references
-      if Math.abs(target - reference) <= offsetHori/2
+      if Math.abs(target - reference) <= offsetHori / 2
         return reference
     null
 
   _outRage: (target, reference) ->
     rage = @opts.rage
-    targetX = (target.offset().left * 2 + target.width())/2
-    targetY = (target.offset().top * 2 + target.height())/2
-    referenceX = (reference.offset().left * 2 + reference.width())/2
-    referenceY = (reference.offset().top * 2 + reference.height())/2
-    return (Math.abs(referenceY - targetY) - (target.height()+reference.height())/2 > rage|| Math.abs(referenceX - targetX) - (target.width()+reference.width())/2 > rage)
+    targetX = (target.offset().left * 2 + target.width()) / 2
+    targetY = (target.offset().top * 2 + target.height()) / 2
+    referenceX = (reference.offset().left * 2 + reference.width()) / 2
+    referenceY = (reference.offset().top * 2 + reference.height()) / 2
+    return (Math.abs(referenceY - targetY) - (target.height() + reference.height()) / 2 > rage || Math.abs(referenceX - targetX) - (target.width() + reference.width()) / 2 > rage)
 
 snap = (opts) ->
   new Snap(opts)
