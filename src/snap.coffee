@@ -30,8 +30,8 @@ class Snap extends SimpleModule
       cursorPosition: @opts.cursorPosition
       cursorOffset: @opts.cursorOffset
       distance: @opts.distance
-      @topLine = $('<div></div>').appendTo("body")
-      @topLine.css({
+      @horiLine = $('<div></div>').appendTo("body")
+      @horiLine.css({
         'position' : 'absolute',
         'height' : '1px',
         'background-color': 'red',
@@ -54,39 +54,110 @@ class Snap extends SimpleModule
       clearTimeout @showAlign
       @forceTop = null
       @forceLeft = null
-      @_checkAlign obj
+      @_checkHori obj
       @trigger 'drag',obj
 
-  _checkAlign: (obj)->
-    topAlign = @opts.alignOffset
-    alignTop = null
+  _checkHori: (obj)->
+    offsetHori = @opts.alignOffset
+    _forceHori = 0
+    _lineAxis = 0
     $helper = obj.helper
-    $stopObj = $helper
-    $startObj = $helper
-    @topLine.css 'visibility','hidden'
-    $.each $('.ball'), (index,ele) =>
+    $stopObj = null
+    @horiLine.css 'visibility','hidden'
+    targetTop = $helper.offset().top
+    targetBot = $helper.offset().top + $helper.height()
+    $.each $(obj.dragging).siblings("."+$(obj.dragging).attr('class')), (index,ele) =>
+      forceHori = null
+      lineAxis = null
       $ele = $(ele)
-      if parseInt($ele.css('z-index')) isnt 100
-        top = parseInt $ele.css 'top'
-        targetTop = parseInt $helper.css 'top'
-        if targetTop - top > 0 and targetTop - top <= topAlign
-          alignTop = top
-          left = $ele.css 'left'
-          if left < $startObj.css 'left'
-            $startObj = $ele
-          if left > $stopObj.css 'left'
-            $stopObj =$ele
-      if alignTop?
-          lineStart = parseInt $startObj.css('left')
-          lineStop = parseInt $stopObj.css('left')
-          width = lineStop - lineStart + parseInt $stopObj.css('width')
-          @topLine.css({
-            'visibility' : 'visible'
-            'width' : width
-            'top' : alignTop,
-            'left' : lineStart,
-          })
-          @forceTop = alignTop
+      if parseInt($ele.css('z-index')) is 100
+        return
+      eleTop = $ele.offset().top
+      eleBot = $ele.offset().top + $ele.height()
+      if targetTop - eleTop >= 0 && targetTop - eleTop <= offsetHori
+        forceHori  = eleTop - targetTop
+        lineAxis = eleTop
+      else if targetTop - eleBot >= 0 && targetTop - eleBot <= offsetHori
+        forceHori  = eleBot - targetTop
+        lineAxis = eleBot
+      else if eleBot - targetBot >= 0 && eleBot - targetBot <= offsetHori
+        forceHori  = eleBot - targetBot
+        lineAxis = eleBot
+      else if eleTop - targetBot >= 0 && eleTop - targetBot <= offsetHori
+        forceHori = eleTop - targetBot
+        lineAxis = eleTop
+      if forceHori?
+        if $stopObj
+          distance1 = Math.abs ($stopObj.offset().left - $helper.offset().left)
+          distance2 = Math.abs($ele.offset().left - $helper.offset().left)
+          if distance2 >= distance1
+            return
+        $stopObj = $ele
+        _forceHori = forceHori
+        _lineAxis = lineAxis
+    if $stopObj?
+      console.log($stopObj)
+      p1 = $helper.offset().left
+      p2 = $stopObj.offset().left
+      startPoint = if p2 < p1 then p2 else p1
+      width = (Math.abs p1 - p2 ) + if p2 < p1 then parseInt $helper.css 'width' else parseInt $stopObj.css 'width'
+      @horiLine.css({
+        'visibility' : 'visible',
+        'width' : width,
+        'top' : _lineAxis,
+        'left' : startPoint
+      })
+
+  _checkHori: (obj)->
+    offsetHori = @opts.alignOffset
+    _forceHori = 0
+    _lineAxis = 0
+    $helper = obj.helper
+    $stopObj = null
+    @horiLine.css 'visibility','hidden'
+    targetTop = $helper.offset().top
+    targetBot = $helper.offset().top + $helper.height()
+    $.each $(obj.dragging).siblings("."+$(obj.dragging).attr('class')), (index,ele) =>
+      forceHori = null
+      lineAxis = null
+      $ele = $(ele)
+      if parseInt($ele.css('z-index')) is 100
+        return
+      eleTop = $ele.offset().top
+      eleBot = $ele.offset().top + $ele.height()
+      if targetTop - eleTop >= 0 && targetTop - eleTop <= offsetHori
+        forceHori  = eleTop - targetTop
+        lineAxis = eleTop
+      else if targetTop - eleBot >= 0 && targetTop - eleBot <= offsetHori
+        forceHori  = eleBot - targetTop
+        lineAxis = eleBot
+      else if eleBot - targetBot >= 0 && eleBot - targetBot <= offsetHori
+        forceHori  = eleBot - targetBot
+        lineAxis = eleBot
+      else if eleTop - targetBot >= 0 && eleTop - targetBot <= offsetHori
+        forceHori = eleTop - targetBot
+        lineAxis = eleTop
+      if forceHori?
+        if $stopObj
+          distance1 = Math.abs ($stopObj.offset().left - $helper.offset().left)
+          distance2 = Math.abs($ele.offset().left - $helper.offset().left)
+          if distance2 >= distance1
+            return
+        $stopObj = $ele
+        _forceHori = forceHori
+        _lineAxis = lineAxis
+    if $stopObj?
+      console.log($stopObj)
+      p1 = $helper.offset().left
+      p2 = $stopObj.offset().left
+      startPoint = if p2 < p1 then p2 else p1
+      width = (Math.abs p1 - p2 ) + if p2 < p1 then parseInt $helper.css 'width' else parseInt $stopObj.css 'width'
+      @horiLine.css({
+        'visibility' : 'visible',
+        'width' : width,
+        'top' : _lineAxis,
+        'left' : startPoint
+      }
 
 snap = (opts) ->
   new Snap(opts)
