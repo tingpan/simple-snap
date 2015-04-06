@@ -83,7 +83,7 @@ class Snap extends SimpleModule
     targetTop = $helper.offset().top
     targetBot = $helper.offset().top + $helper.height()
     targetMid = (targetTop + targetBot) / 2
-    $.each $(obj.dragging).siblings("." + $(obj.dragging).attr('class')), (index, ele) =>
+    $.each $(obj.dragging).siblings(@opts.draggable), (index, ele) =>
       forceHori = null
       lineAxis = null
       $ele = $(ele)
@@ -130,7 +130,7 @@ class Snap extends SimpleModule
     targetLeft = $helper.offset().left
     targetRight = $helper.offset().left + $helper.width()
     targetMid = (targetLeft + targetRight) / 2
-    $.each $(obj.dragging).siblings("." + $(obj.dragging).attr('class')), (index, ele) =>
+    $.each $(obj.dragging).siblings(@opts.draggable), (index, ele) =>
       forceVert = null
       lineAxis = null
       $ele = $(ele)
