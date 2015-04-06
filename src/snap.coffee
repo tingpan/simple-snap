@@ -103,9 +103,9 @@ class Snap extends SimpleModule
         forceHori = lineAxis - targetBot
       if forceHori?
         if $stopObj
-          distance1 = Math.abs ($stopObj.offset().left - $helper.offset().left)
-          distance2 = Math.abs($ele.offset().left - $helper.offset().left)
-          if distance2 >= distance1
+          distance1 = @_distance $helper, $stopObj
+          distance2 = @_distance $helper, $ele
+          if distance2.x >= distance1.x
             return
         $stopObj = $ele
         @forceHori = forceHori
@@ -150,9 +150,9 @@ class Snap extends SimpleModule
         forceVert = lineAxis - targetRight
       if forceVert?
         if $stopObj
-          distance1 = Math.abs ($stopObj.offset().top - $helper.offset().top)
-          distance2 = Math.abs($ele.offset().top - $helper.offset().top)
-          if distance2 >= distance1
+          distance1 = @_distance $helper, $stopObj
+          distance2 = @_distance $helper, $ele
+          if distance2.y >= distance1.y
             return
         $stopObj = $ele
         @forceVert = forceVert
@@ -184,11 +184,17 @@ class Snap extends SimpleModule
 
   _outRage: (target, reference) ->
     rage = @opts.rage
+    distance = @_distance target,reference
+    return (distance.y > rage || distance.x  > rage)
+
+  _distance: (target, reference)->
     targetX = (target.offset().left * 2 + target.width()) / 2
     targetY = (target.offset().top * 2 + target.height()) / 2
     referenceX = (reference.offset().left * 2 + reference.width()) / 2
     referenceY = (reference.offset().top * 2 + reference.height()) / 2
-    return (Math.abs(referenceY - targetY) - (target.height() + reference.height()) / 2 > rage || Math.abs(referenceX - targetX) - (target.width() + reference.width()) / 2 > rage)
-
+    distance =
+      y : Math.abs(referenceY - targetY) - (target.height() + reference.height()) / 2
+      x : Math.abs(referenceX - targetX) - (target.width() + reference.width()) / 2
+    distance
 snap = (opts) ->
   new Snap(opts)
