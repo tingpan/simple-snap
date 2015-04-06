@@ -95,11 +95,11 @@ class Snap extends SimpleModule
       eleBot = $ele.offset().top + $ele.height()
       eleMid = (eleTop + eleBot) / 2
       eleReference = [eleTop, eleMid, eleBot]
-      if (lineAxis = @_compareMid targetMid, eleMid)?
+      if (lineAxis = @_compareReferences targetMid, eleReference, 1)?
         forceHori = lineAxis - targetMid
-      else if (lineAxis = @_compareReferences targetTop, eleReference)?
+      else if (lineAxis = @_compareReferences targetTop, eleReference, @opts.alignOffset)?
         forceHori = lineAxis - targetTop
-      else if (lineAxis = @_compareReferences targetBot, eleReference)?
+      else if (lineAxis = @_compareReferences targetBot, eleReference, @opts.alignOffset)?
         forceHori = lineAxis - targetBot
       if forceHori?
         if $stopObj
@@ -142,11 +142,11 @@ class Snap extends SimpleModule
       eleRight = $ele.offset().left + $ele.width()
       eleMid = (eleLeft + eleRight) / 2
       eleReference = [eleLeft, eleRight, eleMid]
-      if (lineAxis = @_compareMid targetMid, eleMid)?
+      if (lineAxis = @_compareReferences targetMid, eleReference, 1)?
         forceVert = lineAxis - targetMid
-      else if (lineAxis = @_compareReferences targetLeft, eleReference)?
+      else if (lineAxis = @_compareReferences targetLeft, eleReference, @opts.alignOffset)?
         forceVert = lineAxis - targetLeft
-      else if (lineAxis = @_compareReferences targetRight, eleReference)?
+      else if (lineAxis = @_compareReferences targetRight, eleReference, @opts.alignOffset)?
         forceVert = lineAxis - targetRight
       if forceVert?
         if $stopObj
@@ -169,16 +169,10 @@ class Snap extends SimpleModule
         'top': startPoint
       })
 
-  _compareMid: (target, reference) ->
-    offsetHori = @opts.alignOffset
-    if Math.abs(target - reference) <= 1
-      return reference
-    null
 
-  _compareReferences: (target, references) ->
-    offsetHori = @opts.alignOffset
+  _compareReferences: (target, references, offset) ->
     for reference in references
-      if Math.abs(target - reference) <= offsetHori / 2
+      if Math.abs(target - reference) <= offset / 2
         return reference
     null
 
