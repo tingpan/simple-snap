@@ -14,7 +14,7 @@ class Snap extends SimpleModule
     distance: 1,
     axis: null,
     align:true,
-    alignOffset: 10,
+    alignOffset: 20,
     rage: 100
 
   _init: ->
@@ -47,7 +47,7 @@ class Snap extends SimpleModule
         'visibility': 'hidden',
         'z-Index': 200
       })
-    @wrapper.data 'sortable', @
+    @wrapper.data 'snap', @
     @_bind()
 
   _bind: ->
@@ -173,13 +173,13 @@ class Snap extends SimpleModule
   _compareReferences: (target, references, offset) ->
     for reference in references
       if Math.abs(target - reference) <= offset / 2
-        return reference
+        reference
     null
 
   _outRage: (target, reference) ->
     rage = @opts.rage
     distance = @_distance target,reference
-    return (distance.y > rage || distance.x  > rage)
+    return (distance.y > rage || distance.x > rage)
 
   _distance: (target, reference)->
     targetX = (target.offset().left * 2 + target.width()) / 2
@@ -190,5 +190,6 @@ class Snap extends SimpleModule
       y : Math.abs(referenceY - targetY) - (target.height() + reference.height()) / 2
       x : Math.abs(referenceX - targetX) - (target.width() + reference.width()) / 2
     distance
+
 snap = (opts) ->
   new Snap(opts)
